@@ -1,7 +1,8 @@
-# We are in this dir:C:\Users\AK\Documents\Work\Python-project\Russian-Learning
 import os
-import zipfile
 # print (os.getcwd())
+# We are in this dir:C:\Users\AK\Documents\Work\Python-project\Russian-Learning
+import zipfile
+import pandas
 
 # function for Unzip file
 def unzip_file():
@@ -18,5 +19,7 @@ def remove_unzip_file():
         file_path = directory_to_extract_to + '/' + file
         os.remove(file_path)
         print('This file is removed: {}'.format(file))
+
+unzip_file()
 
 
