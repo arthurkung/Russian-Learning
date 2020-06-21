@@ -1,9 +1,11 @@
 import os
 # print (os.getcwd())
 # We are in this dir:C:\Users\AK\Documents\Work\Python-project\Russian-Learning
+# os. chdir("C:/Users/AK/Documents/Work/Python-project/Russian-Learning")
 import zipfile
-import pandas
-
+import numpy as np
+import pandas as pd
+# import matplotlib
 # function for Unzip file
 def unzip_file():
     path_to_zip_file='resource/Russian-English-Bible.zip'
@@ -20,6 +22,8 @@ def remove_unzip_file():
         os.remove(file_path)
         print('This file is removed: {}'.format(file))
 
-unzip_file()
+# unzip_file()
+# sentences_csv = directory_to_extract_to + '/' + unzipped_filename[0]
+# sentences_df = pd.read_csv(sentences_csv)
 
-
+# print(len)
