@@ -67,4 +67,12 @@ NT_string='''1. Matthew
 27. Revelation'''
 
 OT_list = OT_string.split('\n')
+OT_list = [string.split('. ') for string in OT_list]
+OT_dict ={int(book[0]):book[1] for book in OT_list}
+
 NT_list = NT_string.split('\n')
+NT_list = [string.split('. ') for string in NT_list]
+NT_dict ={int(book[0])+39:book[1] for book in NT_list}
+Bible_book_list = {**OT_dict, **NT_dict}
+
+
