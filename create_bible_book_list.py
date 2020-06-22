@@ -75,4 +75,15 @@ NT_list = [string.split('. ') for string in NT_list]
 NT_dict ={int(book[0])+39:book[1] for book in NT_list}
 Bible_book_list = {**OT_dict, **NT_dict}
 
+def give_full_verse_name(verse_name):
+    try:
+        book, chapter, verse = verse_name.split('-')
+        last_book_char = book[-1]
+        if not last_book_char.isdigit():
+            book = book[:-1]
+        book_name = Bible_book_list[int(book)]
+
+        return book_name+' '+chapter+':'+verse
+    except:
+        raise Exception('versename has to be in format: booknum-chapternum-versenum')
 
