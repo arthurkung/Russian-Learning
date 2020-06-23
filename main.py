@@ -5,6 +5,8 @@ import os
 import zipfile
 import numpy as np
 import pandas as pd
+import create_bible_book_list as bible
+import PySimpleGUI as sg
 # import matplotlib
 
 directory_to_extract_to='resource'
@@ -24,7 +26,32 @@ def remove_unzip_file():
         os.remove(file_path)
         print('This file is removed: {}'.format(file))
 
+
+# unzip and get the bible sentences into a dataframe
 # unzip_file()
 sentences_csv = directory_to_extract_to + '/' + unzipped_filename[0]
 sentences_df = pd.read_csv(sentences_csv)
 
+# define typing box
+def typing_box():
+    Russian_verse = sentences_df['russian'].iloc[0]
+    English_verse = sentences_df['english'].iloc[0]
+    short_verse_name = sentences_df['verse_name'].iloc[0]
+    verse_full_name = bible.give_full_verse_name(short_verse_name)
+    layout = [[sg.Text(verse_full_name)],[sg.Text(Russian_verse)],[sg.Text(English_verse)],
+                     [sg.InputText()],
+                     [sg.Submit(), sg.Cancel()]]
+
+    window = sg.Window('Window Title', layout)
+
+    event, values = window.read()
+    window.close()
+    text_input = values[0]
+    return text_input
+
+text_input = ''
+
+while text_input != 'stop':
+
+    text_input = typing_box()
+    sg.popup('You entered', text_input)
